@@ -1,0 +1,268 @@
+<!DOCTYPE html lang="zh-CN">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="icon" href="icon/Logo.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="full-screen" content="yes"><!--UC强制全屏-->
+    <meta name="browsermode" content="application"><!--UC应用模式-->
+    <meta name="x5-fullscreen" content="true"><!--QQ强制全屏-->
+    <meta name="x5-page∏mode" content="app"><!--QQ应用模式-->
+    <title>Soul 导航</title>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/jQuery.rTabs.js"></script>
+    <script src="./js/js.cookie.js"></script>
+    <link rel="stylesheet" href="./css/sou.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="soul">
+        <!-- 侧栏 -->
+        <div id="menu"><i></i></div>
+        <div class="side closed">
+            <div class="tab-nav j-tab-nav">
+                <a href="javascript:void(0);" class="current">书签</a>
+                <a href="javascript:void(0);">设置</a>
+                <a href="javascript:void(0);">我的</a>
+            </div>
+            <div class="tab-con">
+                <div class="j-tab-con">
+                    <!--书签-->
+                    <div class="tab-con-item" style="display:block;">
+                        <div class="list">
+                            <ul>
+                                <div v-for="item in bookmarks" :key="item.title">
+                                    <li class="title"><i class="iconfont"></i>{{ item.title }}</li>
+                                    <li v-for="site in item.websites">
+                                        <a rel="nofollow" :href="site.url" target="_blank">
+                                            <i class="iconfont"></i>{{site.name}}</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--书签 end-->
+                    <!--设置-->
+                    <div class="tab-con-item">
+                        <div class="set">
+                            <!--搜索引擎设置-->
+                            <div class="set_blocks">
+                                <div class="set_blocks_title">
+                                    搜索引擎
+                                </div>
+                                <div class="set_blocks_content">
+                                    <div class="se_list">
+                                        <table class="se_list_table">
+                                            <tr>
+                                                <td><span class="iconfont iconhome"></span></td>
+                                                <td>百度</td>
+                                                <td>
+                                                    <button class="set_se_default" value="baidu"><span class="iconfont iconstrore-add"></span></button>
+                                                    &nbsp;
+                                                    <button class="edit_se" value="baidu"><span class="iconfont iconbook-edit"></span></button>
+                                                    &nbsp;
+                                                    <button class="delete_se" value="baidu"><span class="iconfont icondelete"></span></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>谷歌</td>
+                                                <td>
+                                                    <button class="set_se_default" value="google"><span class="iconfont iconstrore-add"></span></button>
+                                                    &nbsp;
+                                                    <button class="edit_se" value="google"><span class="iconfont iconbook-edit"></span></button>
+                                                    &nbsp;
+                                                    <button class="delete_se" value="google"><span class="iconfont icondelete"></span></button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="se_add_preinstall">
+                                        <button class="set_se_list_add"><span class="icon iconfont icontianjia"></span>新增</button>
+                                        <button class="set_se_list_preinstall"><span class="icon iconfont iconjinggao"></span>重置</button>
+                                    </div>
+                                    <div class="add_content se_add_content" style="display:none;">
+                                        <div class="from_items">
+                                            <p><b>顺序:</b></p>
+                                            <input type="hidden" name="key_inhere">
+                                            <input type="number" name="key" placeholder="填入正整数">
+                                        </div>
+                                        <div class="from_items">
+                                            <p><b>名称:</b></p>
+                                            <input type="text" name="title" placeholder="网站名称">
+                                        </div>
+                                        <div class="from_items">
+                                            <p><b>网址:</b></p>
+                                            <input type="url" name="url" placeholder="以“https:”或“http:”开头的URL">
+                                        </div>
+                                        <div class="from_items">
+                                            <p><b>搜索字段名:</b></p>
+                                            <input type="text" name="name" placeholder="URL中“?”后的字段">
+                                        </div>
+                                        <div class="from_items">
+                                            <p><b>图标:</b></p>
+                                            <input type="text" name="img" placeholder="图片地址">
+                                        </div>
+                                        <div class="from_items button">
+                                            <button class="se_add_save">保存</button>
+                                            <button class="se_add_cancel">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--搜索引擎设置 end-->
+                            <!--快捷方式设置-->
+                            <div class="set_blocks">
+                                <div class="set_blocks_title">
+                                    快捷方式
+                                </div>
+                                <div class="set_blocks_content">
+                                    <div class="quick_list">
+                                        <table class="quick_list_table">
+                                            <tr>
+                                                <td>1.&nbsp;</td>
+                                                <td>哔哩哔哩</td>
+                                                <td>
+                                                    <button class="edit_quick" value="1"><span class="iconfont iconbook-edit"></span></button>
+                                                    &nbsp;
+                                                    <button class="delete_quick" value="1"><span class="iconfont icondelete"></span></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2.&nbsp;</td>
+                                                <td>知乎</td>
+                                                <td>
+                                                    <button class="edit_quick" value="2"><span class="iconfont iconbook-edit"></span></button>
+                                                    &nbsp;
+                                                    <button class="delete_quick" value="2"><span class="iconfont icondelete"></span></button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="se_add_preinstall">
+                                        <button class="set_quick_list_add"><span class="icon iconfont icontianjia"></span>新增</button>
+                                        <button class="set_quick_list_preinstall"><span class="icon iconfont iconjinggao"></span>重置</button>
+                                    </div>
+                                    <div class="add_content quick_add_content" style="display:none;">
+                                        <div class="from_items">
+                                            <p><b>顺序:</b></p>
+                                            <input type="hidden" name="key_inhere">
+                                            <input type="number" name="key" placeholder="填入正整数">
+                                        </div>
+                                        <div class="from_items">
+                                            <p><b>名称:</b></p>
+                                            <input type="text" name="title" placeholder="网站名称">
+                                        </div>
+                                        <div class="from_items">
+                                            <p><b>网址:</b></p>
+                                            <input type="url" name="url" placeholder="以“https:”或“http:”开头的URL">
+                                        </div>
+                                        <div class="from_items">
+                                            <p><b>图标:</b></p>
+                                            <input type="text" name="img" placeholder="图片地址">
+                                        </div>
+                                        <div class="from_items button">
+                                            <button class="quick_add_save">保存</button>
+                                            <button class="quick_add_cancel">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--快捷方式设置 end-->
+                        </div>
+                    </div>
+                    <!--设置 end-->
+                    <!--我的-->
+                    <div class="tab-con-item">
+                        <div class="me">
+                            <p><img src="./icon/user.png"></p>
+                        </div>
+                        <div class="my_data">
+                            <hr>
+                            <br>
+                            <h3>数据备份</h3>
+                            <textarea id="data_txt"></textarea>
+                            <br>
+                            <button id="my_data_in">导入</button>
+                            <button id="my_data_out">导出</button>
+                        </div>
+                    </div>
+                    <!--我的 end-->
+                </div>
+            </div>
+        </div>
+        <!-- 侧栏 end -->
+        <!--搜索框和书签-->
+        <div id="content">
+            <div class="con">
+
+                <!--一般搜索框上面都有的图片↓-->
+                <!-- <div class="shlogo"></div> -->
+
+                <div class="sou">
+                    <form class="search" :action="search.url">
+                        <img v-on:click="is_search_show = !is_search_show" class="se" :src="search.img" title="点击切换搜索引擎"></img>
+                        <input class="wd" type="text" :name="search.name" placeholder="请输入搜索内容">
+                        <button class="s">
+                            <i style="font-size: 20px;" class="iconfont icon-sousuo"></i>
+                        </button>
+                    </form>
+                    <div class="search-engine" v-show="is_search_show">
+                        <div class="search-engine-head">
+                            <strong class="search-engine-tit">选择搜索引擎：</strong>
+                        </div>
+                        <ul id="soul-search" class="search-engine-list">
+                            <li v-on:click="chooseSearch(item)" v-for="item in searchList" :key="item.title" class="se-li" :url="item.url" :name="item.name" :img="item.img">
+                                <img :src="item.img"></img>{{item.title}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="quick-div">
+                        <ul class="quick-ul">
+                            <li class="quick" data-s="bilibili" target="_blank" title="哔哩哔哩 (゜-゜)つロ 干杯~">
+                                <a href="https://www.bilibili.com/">
+                                    <i style="background-image: url(./icon/bilibili.png);"></i>
+                                    哔哩哔哩
+                                </a>
+                            </li>
+                            <li class="quick" data-s="github" target="_blank" title="GitHub">
+                                <a href="https://github.com/">
+                                    <i style="background-image: url(./icon/github.ico);"></i>
+                                    GitHub
+                                </a>
+                            </li>
+                            <li class="quick" data-s="v2ex" target="_blank" title="V2EX">
+                                <a href="https://www.v2ex.com/">
+                                    <i style="background-image: url(./icon/v2ex.png);"></i>
+                                    V2EX
+                                </a>
+                            </li>
+                            <li class="quick" data-s="steam" target="_blank" title="Steam">
+                                <a href="https://store.steampowered.com/">
+                                    <i style="background-image: url(./icon/steam.ico);"></i>
+                                    Steam
+                                </a>
+                            </li>
+                            <li class="quick" data-s="scp" target="_blank" title="控制，收容，保护">
+                                <a href="http://scp-wiki-cn.wikidot.com/">
+                                    <i style="background-image: url(./icon/scp.png);"></i>
+                                    scp基金会
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="foot">
+            </div>
+        </div>
+        <!--搜索框和书签 end-->
+    </div>
+    <script src="./js/sou.js"></script>
+</body>
+</html>

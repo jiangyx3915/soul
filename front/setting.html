@@ -1,0 +1,92 @@
+<!DOCTYPE html lang="zh-CN">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="Cache-Control" content="no-siteapp">
+        <link rel="icon" href="icon/Logo.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-touch-fullscreen" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="full-screen" content="yes"><!--UC强制全屏-->
+        <meta name="browsermode" content="application"><!--UC应用模式-->
+        <meta name="x5-fullscreen" content="true"><!--QQ强制全屏-->
+        <meta name="x5-page∏mode" content="app"><!--QQ应用模式-->
+        <title>Soul 导航设置</title>
+        <script src="./js/js.cookie.js"></script>
+        <link rel="stylesheet" href="./css/setting.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <!-- 引入组件库 -->
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <el-container>
+                <el-header class="header">
+                    <div class="avatar">
+                        <el-avatar  src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    </div>
+                </el-header>
+                <div class="content">
+                    <div class="navbar">
+                        <el-button @click="urlFormVisible = true" style="margin-left: 25%; margin-top: 10px;" class="add-btn" type="primary">+ 添加网站</el-button>
+                        <el-button style="margin-left: 40%;" type="primary" icon="el-icon-edit" circle></el-button>
+                        <el-button type="danger" icon="el-icon-delete" circle></el-button>
+                    </div>
+                    <div class="groups">
+                        <p class="title">常用网站</p>
+                        <div class="sites">
+                            <a class="site" href="http://s.ilxdh.com/" target="_blank">
+                                <img src="http://s.ilxdh.com/favicon.ico" />
+                                <span class="name text-ellip">龙轩搜索</span>
+                            </a>
+                            <a class="site" href="http://s.ilxdh.com/" target="_blank">
+                                <img src="http://s.ilxdh.com/favicon.ico" />
+                                <span class="name text-ellip">龙轩搜索</span>
+                            </a>
+                            <a class="site" href="http://s.ilxdh.com/" target="_blank">
+                                <img src="http://s.ilxdh.com/favicon.ico" />
+                                <span class="name text-ellip">龙轩搜索</span>
+                            </a>
+                            <a class="site" href="http://s.ilxdh.com/" target="_blank">
+                                <img src="http://s.ilxdh.com/favicon.ico" />
+                                <span class="name text-ellip">龙轩搜索</span>
+                            </a>
+                            <a class="site" href="http://s.ilxdh.com/" target="_blank">
+                                <img src="http://s.ilxdh.com/favicon.ico" />
+                                <span class="name text-ellip">龙轩搜索</span>
+                            </a>
+                            <a class="site" href="http://s.ilxdh.com/" target="_blank">
+                                <img src="http://s.ilxdh.com/favicon.ico" />
+                                <span class="name text-ellip">龙轩搜索</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </el-container>
+            <el-dialog :visible.sync="urlFormVisible" title="添加网站">
+                <el-form ref="form" :model="form" label-width="80px">
+                    <el-form-item label="网站地址" required>
+                        <el-input v-model="form.url"></el-input>
+                    </el-form-item>
+                    <el-form-item label="网站名称" required>
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="所属分类" required>
+                        <el-select v-model="form.category" placeholder="请选择分类">
+                            <el-option label="区域二" value="beijing"></el-option>
+                        </el-select>
+                        <el-button type="primary">添加</el-button>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="addSite">确定添加</el-button>
+                        <el-button>取消</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-dialog>
+        </div>
+    </body>
+    <script src="./js/setting.js"></script>
+</html>

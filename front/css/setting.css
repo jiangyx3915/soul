@@ -1,0 +1,64 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #F1F5F8;
+}
+
+.header {
+    background-color: black;
+}
+
+.avatar {
+    float: right;
+    margin-top: 10px;
+}
+
+.navbar {
+    height: 60px;
+    background-color: #ffffff;
+}
+
+.add-btn {
+    height: 40px;
+    line-height: 40px;
+    font-size: 13px;
+    width: 160px;
+    text-align: center;
+}
+
+.groups {
+    background-color: #ffffff;
+    width: 980px;
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.groups .title {
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.groups::after{
+    content:"";
+    clear:both;
+    display:block;
+}
+
+.groups .site {
+    float: left;
+    width: 20%;
+    text-align: center;
+    line-height: 40px;
+    text-decoration:none;
+}
+
+.groups .site img {
+    width: 16px;
+    height: 16px;
+}
+
+.groups .site span {
+    margin-left: 5px;
+}
